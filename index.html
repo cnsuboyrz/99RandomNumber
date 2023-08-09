@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+           
+            
+        </style>
+    </head>
+
+    <body>
+        <label for="siralabtn">1'den 99'a kadar olan sayıları for döngüsü ile
+            yan yana sırala</label>
+        <button id="siralabtn">Sırala</button>
+        <br />
+        <button id="rastgelesybtn" disabled>Rastgele Sayı Seç</button>
+        <p class="sayilar">
+
+        </p>
+
+        <script>
+
+            var siralaButonu=document.getElementById("siralabtn");
+            var sayiTablosu=document.querySelector(".sayilar");
+            var rastgeleSayiButonu=document.getElementById("rastgelesybtn");
+
+            siralaButonu.addEventListener("click", function(event){
+               
+                let text="";
+                for(let i=1;i<=99;i++){
+                    text += `<span id="span${i}">${i} </span>`;
+                    if(i%10==0){
+                        text += "<br><br>";
+                    }
+                }
+                sayiTablosu.innerHTML= text;
+                siralaButonu.disabled=true;
+                rastgeleSayiButonu.disabled=false;
+            });
+
+            rastgeleSayiButonu.addEventListener("click",function(event){
+                let randomnmbr= Math.floor(Math.random() * 99) + 1;
+                var bulunanSayi= document.getElementById(`span${randomnmbr}`);
+                bulunanSayi.style.color="red";
+                bulunanSayi.style.fontWeight="bold";
+            });
+        </script>
+    </body>
+
+</html>
